@@ -1,7 +1,3 @@
-// ==========================
-// 0. HERO — Fond particules animées
-// ==========================
-
 function initParticles() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
@@ -91,10 +87,6 @@ function initParticles() {
   });
 }
 
-
-// ==========================
-// 1. HERO — Animation d'apparition du texte
-// ==========================
 
 function animateHero() {
   const eyebrow = document.querySelector('.hero-eyebrow');
@@ -194,9 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ==========================
-// 2. NAVBAR — devient opaque au scroll
-// ==========================
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
@@ -207,10 +196,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-
-// ==========================
-// 3. MODALES — ouverture et fermeture
-// ==========================
 
 const overlay = document.getElementById('overlay');
 
@@ -243,55 +228,3 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-// ==========================
-// 4. FORMULAIRE — Message de confirmation
-// ==========================
-
-const contactForm = document.querySelector('.contact-form');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const name = contactForm.querySelector('input[type="text"]').value;
-    showNotification(`Message envoyé ! Merci ${name} 🚀`);
-    contactForm.reset();
-  });
-}
-
-function showNotification(message) {
-  const notification = document.createElement('div');
-
-  notification.style.cssText = `
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: linear-gradient(135deg, #6c63ff, #00d4ff);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 0.95rem;
-    box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
-    z-index: 9999;
-    animation: slideIn 0.4s ease;
-  `;
-
-  notification.textContent = message;
-
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideIn {
-      from { transform: translateX(100px); opacity: 0; }
-      to   { transform: translateX(0);     opacity: 1; }
-    }
-  `;
-  document.head.appendChild(style);
-  document.body.appendChild(notification);
-
-  setTimeout(() => {
-    notification.style.opacity    = '0';
-    notification.style.transition = 'opacity 0.3s ease';
-    setTimeout(() => notification.remove(), 300);
-  }, 4000);
-}
