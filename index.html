@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Patin — Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <span class="logo">Lucas Patin</span>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Étudiant en Bachelor Informatique</p>
+            <h1>Bonjour, je suis <span class="highlight">Lucas Patin</span></h1>
+            <p class="hero-sub">À la recherche d'un stage de minimum 8 semaines en informatique</p>
+            <a href="#parcours" class="btn">Découvrir mon parcours ↓</a>
+        </div>
+    </section>
+
+    <!-- PARCOURS -->
+    <section id="parcours" class="section">
+        <div class="container">
+            <h2 class="section-title">Mon Parcours</h2>
+            <p class="section-intro">Formation académique et diplômes obtenus.</p>
+            <div class="cards-grid">
+
+                <div class="card" data-modal="bachelor">
+                    <div class="card-icon">🎓</div>
+                    <h3>Bachelor Informatique</h3>
+                    <p>ESIEE-IT, Pontoise</p>
+                    <span class="card-tag">En cours — 3ème année</span>
+                </div>
+
+                <div class="card" data-modal="bts">
+                    <div class="card-icon">⚙️</div>
+                    <h3>BTS CRSA</h3>
+                    <p>Lycée Jean Perrin, Saint-Ouen l'Aumône</p>
+                    <span class="card-tag">Obtenu — 2022/2024</span>
+                </div>
+
+                <div class="card" data-modal="bac">
+                    <div class="card-icon">📐</div>
+                    <h3>Bac STI2D — Spécialité ITEC</h3>
+                    <p>Lycée Jean Perrin, Saint-Ouen l'Aumône</p>
+                    <span class="card-tag">Obtenu — 2022</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPÉRIENCE -->
+    <section id="experience" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Expérience Professionnelle</h2>
+            <p class="section-intro">Stages et missions réalisés en entreprise.</p>
+            <div class="cards-grid">
+
+                <div class="card" data-modal="stage">
+                    <div class="card-icon">🔧</div>
+                    <h3>Stage Technicien Maintenance</h3>
+                    <p>Conserverie Artisanale Charles Derungs</p>
+                    <span class="card-tag">Mai – Juin 2024 · 6 semaines</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets" class="section">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            <p class="section-intro">Projets académiques et personnels réalisés.</p>
+            <div class="cards-grid">
+
+                <div class="card" data-modal="dior">
+                    <div class="card-icon">💄</div>
+                    <h3>Projet DIOR</h3>
+                    <p>Machine automatisée — Projet de fin de BTS</p>
+                    <span class="card-tag">Automatisme · Mécanique</span>
+                </div>
+
+                <div class="card" data-modal="python">
+                    <div class="card-icon">🎮</div>
+                    <h3>Mercredi Shadow Run</h3>
+                    <p>Jeu runner développé en Python</p>
+                    <span class="card-tag">Python · Pygame · Piscine</span>
+                </div>
+
+                <div class="card" data-modal="video">
+                    <div class="card-icon">🎬</div>
+                    <h3>Montage Vidéo</h3>
+                    <p>Projets personnels de création audiovisuelle</p>
+                    <span class="card-tag">DaVinci · Premiere · Photoshop</span>
+                </div>
+
+                <div class="card" data-modal="portfolio">
+                    <div class="card-icon">💻</div>
+                    <h3>Ce Portfolio</h3>
+                    <p>Site web responsive from scratch</p>
+                    <span class="card-tag">HTML · CSS · JavaScript</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT simplifié -->
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Me Contacter</h2>
+            <p class="section-intro">N'hésitez pas à me contacter pour toute opportunité.</p>
+
+            <div class="contact-simple">
+
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:patinlucas095@gmail.com">patinlucas095@gmail.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-label">Téléphone</span>
+                    <span>06 43 07 08 35</span>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-label">Réseaux sociaux</span>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/lucas-patin-421b5a356/"
+                           target="_blank"
+                           class="social-btn social-linkedin">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://github.com/patinlucas095-rgb"
+                           target="_blank"
+                           class="social-btn social-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Lucas Patin — Tous droits réservés.</p>
+    </footer>
+
+    <!-- OVERLAY -->
+    <div id="overlay"></div>
+
+    <!-- ==================== MODALES ==================== -->
+
+    <div class="modal" id="modal-bachelor">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">🎓</div>
+        <h2>Bachelor Informatique — 3ème année</h2>
+        <p class="modal-school">ESIEE-IT · Pontoise · En cours</p>
+        <div class="modal-body">
+            <p>Formation en informatique:</p>
+            <ul>
+                <li><strong>Langages :</strong> Python, C, JavaScript, HTML/CSS</li>
+                <li><strong>Systèmes :</strong> Configuration Windows, administration systèmes & réseaux</li>
+                <li><strong>Cybersécurité :</strong> TP sur Kali Linux, Ubuntu</li>
+                <li><strong>Web :</strong> Création de sites internet, bases de données</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-bts">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">⚙️</div>
+        <h2>BTS CRSA — Conception et Réalisation de Systèmes Automatiques</h2>
+        <p class="modal-school">Lycée Jean Perrin · Saint-Ouen l'Aumône · 2022 – 2024</p>
+        <div class="modal-body">
+            <p>Formation spécialisée dans la conception, la programmation et la maintenance de systèmes automatisés industriels :</p>
+            <ul>
+                <li><strong>Informatique industrielle :</strong> Grafcet, programmation d'automates (ST, FBD, LADDER)</li>
+                <li><strong>Automatisme :</strong> Pneumatique, électricité, mécanique</li>
+                <li><strong>Conception :</strong> Dimensionnement, modélisation 3D</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-bac">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">📐</div>
+        <h2>Bac STI2D — Spécialité ITEC</h2>
+        <p class="modal-school">Lycée Jean Perrin · Saint-Ouen l'Aumône · 2022</p>
+        <div class="modal-body">
+            <p>Baccalauréat Sciences et Technologies de l'Industrie et du Développement Durable, spécialité <strong>Innovation Technologique et Éco-Conception (ITEC)</strong> :</p>
+            <ul>
+                <li><strong>Conception mécanique :</strong> Modélisation 3D, analyse de systèmes techniques</li>
+                <li><strong>Matériaux et structures :</strong> Choix de matériaux, dimensionnement</li>
+                <li><strong>Éco-conception :</strong> Analyse du cycle de vie, démarche environnementale</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-stage">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">🔧</div>
+        <h2>Stage — Technicien de Maintenance</h2>
+        <p class="modal-school">Conserverie Artisanale Charles Derungs · Saint-Ouen l'Aumône · Mai – Juin 2024 (6 semaines)</p>
+        <div class="modal-body">
+            <p>Stage de fin de 1ère année de BTS au sein d'une conserverie artisanale :</p>
+            <ul>
+                <li>Maintien en bon état de fonctionnement des machines de production</li>
+                <li>Diagnostic et réparation de pannes mécaniques et électriques</li>
+                <li>Relation client et reporting auprès de l'équipe technique</li>
+                <li>Application concrète des compétences en automatisme et maintenance industrielle</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-dior">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">💄</div>
+        <h2>Projet DIOR</h2>
+        <p class="modal-school">Projet de fin de BTS CRSA · 2024</p>
+        <div class="modal-body">
+            <p>Projet de fin d'études réalisé dans le cadre du BTS CRSA :</p>
+            <ul>
+                <li>Reprise d'une ancienne machine de distribution de fard à paupières conçue pour DIOR</li>
+                <li>Transformation : passage d'un cycle <strong>ouvert</strong> à un cycle <strong>fermé</strong></li>
+                <li>Conception 3D jusqu'à l'installation, câblage électrique et programmation de l'automate</li>
+                <li>Rédaction du dossier technique complet et soutenance orale devant un jury professionnel</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-python">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">🎮</div>
+        <h2>Mercredi Shadow Run</h2>
+        <p class="modal-school">Projet Piscine Python · ESIEE-IT · 2026</p>
+        <div class="modal-body">
+            <p>Jeu runner développé en une semaine lors de la Piscine Python :</p>
+            <ul>
+                <li><strong>Principe :</strong> Runner inspiré de la série "Mercredi"</li>
+                <li><strong>Gameplay :</strong> Collecte de pièces, évitement d'obstacles, difficulté progressive</li>
+                <li><strong>Système de boutique :</strong> Achat de bonus avec les pièces collectées</li>
+                <li><strong>Technologies :</strong> Python, Pygame pour le rendu graphique et la gestion des collisions</li>
+                <li><strong>Contrainte :</strong> Création du jeu en 1 semaine et thème imposé</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-video">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">🎬</div>
+        <h2>Montage Vidéo</h2>
+        <p class="modal-school">Projets personnels</p>
+        <div class="modal-body">
+            <p>Pratique personnelle du montage vidéo :</p>
+            <ul>
+                <li><strong>DaVinci Resolve :</strong> Étalonnage couleur et montage vidéo</li>
+                <li><strong>Adobe Premiere Pro :</strong> Montage vidéo, transitions, synchronisation audio</li>
+                <li><strong>Adobe Photoshop :</strong> Retouche d'images, création de visuels, miniatures</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-portfolio">
+        <button class="modal-close">✕</button>
+        <div class="modal-icon">💻</div>
+        <h2>Ce Portfolio</h2>
+        <p class="modal-school">Projet personnel · 2026</p>
+        <div class="modal-body">
+            <p>Création de ce portfolio :</p>
+            <ul>
+                <li><strong>HTML :</strong> Structure du portfolio</li>
+                <li><strong>CSS :</strong> Design moderne et couleurs simples</li>
+                <li><strong>JavaScript :</strong> Animations et interactions</li>
+                <li><strong>Hébergement :</strong> Déploiement prévu sur GitHub Pages</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
