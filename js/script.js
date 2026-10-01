@@ -39,32 +39,80 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-// logos et photo : l'image remplace le badge seulement si le fichier existe
-// (sinon on garde le badge avec les initiales, jamais d'image cassée)
+// pages : l'accueil (présentation, parcours, contact) et les pages à part
+// (expériences, projets, veille, projet futur). On change de page avec l'ancre de l'URL,
+// donc le bouton « retour » du navigateur marche et chaque page a son lien.
 
-document.querySelectorAll('[data-logo]').forEach(badge => {
-  const img = new Image();
-  img.onload = () => {
-    img.className = 'logo-img';
-    img.alt = badge.dataset.alt || '';
-    img.width = 48;
-    img.height = 48;
-    badge.replaceWith(img);
-  };
-  img.src = badge.dataset.logo;
+const views = document.querySelectorAll('[data-view]');
+const navLinks = document.querySelectorAll('[data-nav]');
+const baseTitle = 'Lucas Patin — Étudiant en cybersécurité';
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let currentView = null;
+
+function showView(firstLoad) {
+  const id = decodeURIComponent(location.hash.slice(1)) || 'accueil';
+  const target = document.getElementById(id);
+  const view = (target && target.closest('[data-view]')) || document.querySelector('[data-view="accueil"]');
+  const name = view.dataset.view;
+  const changed = name !== currentView;
+
+  views.forEach(v => { v.hidden = v !== view; });
+  navLinks.forEach(link => {
+    if (link.dataset.nav === name) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
+
+  if (changed && !firstLoad && !reduceMotion) {
+    view.classList.remove('view-enter');
+    void view.offsetWidth; // relance l'animation
+    view.classList.add('view-enter');
+  }
+
+  const title = view.querySelector('h2, h1');
+  document.title = name === 'accueil' ? baseTitle : title.textContent + ' — Lucas Patin';
+
+  // haut de page si on arrive sur une page, sinon on descend jusqu'à la section demandée
+  if (!target || target === view || id === 'accueil') {
+    if (changed || id === 'accueil') window.scrollTo({ top: 0, behavior: changed || reduceMotion ? 'auto' : 'smooth' });
+  } else {
+    target.scrollIntoView({ behavior: changed || reduceMotion ? 'auto' : 'smooth' });
+  }
+
+  // pour les lecteurs d'écran : on annonce le titre de la nouvelle page
+  if (changed && !firstLoad && title) {
+    title.setAttribute('tabindex', '-1');
+    title.focus({ preventScroll: true });
+  }
+
+  currentView = name;
+}
+
+window.addEventListener('hashchange', () => showView(false));
+showView(true);
+
+
+// logos : si une image ne charge pas, on affiche les initiales à la place
+// (jamais d'image cassée)
+
+function logoFallback(img) {
+  const badge = document.createElement('span');
+  badge.className = 'logo-badge';
+  badge.textContent = img.dataset.initials || '?';
+  badge.setAttribute('aria-hidden', 'true');
+  img.closest('.logo-frame').replaceWith(badge);
+}
+
+document.querySelectorAll('.logo-frame img').forEach(img => {
+  if (img.complete && img.naturalWidth === 0) logoFallback(img);
+  else img.addEventListener('error', () => logoFallback(img));
 });
 
-const photo = document.querySelector('[data-photo]');
-
-if (photo) {
-  const img = new Image();
-  img.onload = () => {
-    img.alt = photo.dataset.alt || '';
-    photo.appendChild(img);
-    photo.hidden = false;
-  };
-  img.src = photo.dataset.photo;
-}
+// photo : si elle ne charge pas, on retire le cadre
+document.querySelectorAll('img[data-hide-on-error]').forEach(img => {
+  const hide = () => img.closest('figure').classList.add('no-photo');
+  if (img.complete && img.naturalWidth === 0) hide();
+  else img.addEventListener('error', hide);
+});
 
 
 // modales des projets (<dialog> gère déjà le focus et la touche Échap)
@@ -124,7 +172,6 @@ copyBtn.addEventListener('click', async () => {
 // apparitions douces au scroll
 
 const revealItems = document.querySelectorAll('.reveal');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (reduceMotion || !('IntersectionObserver' in window)) {
   revealItems.forEach(el => el.classList.add('is-visible'));

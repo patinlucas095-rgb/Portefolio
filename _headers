@@ -1,0 +1,4 @@
+# Netlify : force le téléchargement du CV (PC et téléphone)
+/assets/cv/*
+  Content-Disposition: attachment; filename="CV_Lucas_Patin.pdf"
+  Content-Type: application/pdf
