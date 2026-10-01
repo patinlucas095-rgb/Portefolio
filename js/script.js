@@ -1,230 +1,142 @@
-function initParticles() {
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
-
-  const canvas = document.createElement('canvas');
-  canvas.id = 'hero-canvas';
-  hero.insertBefore(canvas, hero.firstChild);
-
-  const ctx = canvas.getContext('2d');
-
-  const COLOR_1 = '108, 99, 255';  // violet
-  const COLOR_2 = '0, 212, 255';   // cyan
-
-  let particles = [];
-  const COUNT = 80;
-  const MAX_DIST = 140;
-
-  function resize() {
-    canvas.width  = hero.offsetWidth;
-    canvas.height = hero.offsetHeight;
-  }
-
-  function createParticle() {
-    return {
-      x:  Math.random() * canvas.width,
-      y:  Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.6,
-      vy: (Math.random() - 0.5) * 0.6,
-      r:  Math.random() * 2 + 1,
-      color: Math.random() > 0.5 ? COLOR_1 : COLOR_2,
-    };
-  }
-
-  function initParticlesArray() {
-    particles = [];
-    for (let i = 0; i < COUNT; i++) {
-      particles.push(createParticle());
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color}, 0.7)`;
-      ctx.fill();
-    });
-
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const a = particles[i];
-        const b = particles[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < MAX_DIST) {
-          const opacity = (1 - dist / MAX_DIST) * 0.35;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = `rgba(${a.color}, ${opacity})`;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  initParticlesArray();
-  draw();
-
-  window.addEventListener('resize', () => {
-    resize();
-    initParticlesArray();
-  });
-}
-
-
-function animateHero() {
-  const eyebrow = document.querySelector('.hero-eyebrow');
-  const title   = document.querySelector('.hero h1');
-  const sub     = document.querySelector('.hero-sub');
-  const btn     = document.querySelector('.hero .btn');
-
-  if (!title) return;
-
-  const fullHTML = title.innerHTML;
-  title.innerHTML = '';
-  title.style.opacity = '1';
-
-  [eyebrow, sub, btn].forEach(el => {
-    if (el) {
-      el.style.opacity    = '0';
-      el.style.transform  = 'translateY(18px)';
-      el.style.transition = 'none';
-    }
-  });
-
-  setTimeout(() => fadeIn(eyebrow), 200);
-
-  setTimeout(() => {
-    typewriterHTML(title, fullHTML, 38, () => {
-      setTimeout(() => fadeIn(sub), 100);
-      setTimeout(() => fadeIn(btn), 350);
-    });
-  }, 550);
-}
-
-function fadeIn(el) {
-  if (!el) return;
-  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-  el.style.opacity    = '1';
-  el.style.transform  = 'translateY(0)';
-}
-
-function typewriterHTML(el, html, speed, onDone) {
-  const temp = document.createElement('div');
-  temp.innerHTML = html;
-  const nodes = Array.from(temp.childNodes);
-
-  let nodeIndex = 0;
-  let charIndex  = 0;
-
-  function next() {
-    if (nodeIndex >= nodes.length) {
-      if (onDone) onDone();
-      return;
-    }
-
-    const node = nodes[nodeIndex];
-
-    if (node.nodeType === Node.TEXT_NODE) {
-      const text = node.textContent;
-      if (charIndex === 0) {
-        node._target = document.createTextNode('');
-        el.appendChild(node._target);
-      }
-      if (charIndex < text.length) {
-        node._target.textContent += text[charIndex];
-        charIndex++;
-        setTimeout(next, speed);
-      } else {
-        charIndex = 0;
-        nodeIndex++;
-        setTimeout(next, speed);
-      }
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      const span = node.cloneNode(false);
-      span.textContent = '';
-      el.appendChild(span);
-      const text = node.textContent;
-      let i = 0;
-      function typeSpan() {
-        if (i < text.length) {
-          span.textContent += text[i];
-          i++;
-          setTimeout(typeSpan, speed);
-        } else {
-          nodeIndex++;
-          charIndex = 0;
-          setTimeout(next, speed);
-        }
-      }
-      typeSpan();
-    }
-  }
-
-  next();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initParticles();
-  animateHero();
-});
-
+// navbar : fond plein dès qu'on a un peu scrollé
 
 const navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+function updateNavbar() {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+}
+
+window.addEventListener('scroll', updateNavbar, { passive: true });
+updateNavbar();
+
+
+// menu mobile
+
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.getElementById('nav-menu');
+const navToggleLabel = navToggle.querySelector('.sr-only');
+
+function setMenu(open) {
+  navMenu.classList.toggle('open', open);
+  navbar.classList.toggle('menu-open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggleLabel.textContent = open ? 'Fermer le menu' : 'Ouvrir le menu';
+}
+
+navToggle.addEventListener('click', () => {
+  setMenu(navToggle.getAttribute('aria-expanded') !== 'true');
+});
+
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => setMenu(false));
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+    setMenu(false);
+    navToggle.focus();
   }
 });
 
 
-const overlay = document.getElementById('overlay');
+// logos et photo : l'image remplace le badge seulement si le fichier existe
+// (sinon on garde le badge avec les initiales, jamais d'image cassée)
 
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', () => {
-    const modalId = card.getAttribute('data-modal');
-    const modal = document.getElementById('modal-' + modalId);
-    if (modal) {
-      overlay.classList.add('active');
-      modal.classList.add('active');
-    }
-  });
+document.querySelectorAll('[data-logo]').forEach(badge => {
+  const img = new Image();
+  img.onload = () => {
+    img.className = 'logo-img';
+    img.alt = badge.dataset.alt || '';
+    img.width = 48;
+    img.height = 48;
+    badge.replaceWith(img);
+  };
+  img.src = badge.dataset.logo;
 });
 
-function closeAllModals() {
-  overlay.classList.remove('active');
-  document.querySelectorAll('.modal.active').forEach(m => {
-    m.classList.remove('active');
-  });
+const photo = document.querySelector('[data-photo]');
+
+if (photo) {
+  const img = new Image();
+  img.onload = () => {
+    img.alt = photo.dataset.alt || '';
+    photo.appendChild(img);
+    photo.hidden = false;
+  };
+  img.src = photo.dataset.photo;
 }
 
-document.querySelectorAll('.modal-close').forEach(btn => {
-  btn.addEventListener('click', closeAllModals);
+
+// modales des projets (<dialog> gère déjà le focus et la touche Échap)
+
+let lastTrigger = null;
+
+document.querySelectorAll('[data-modal]').forEach(card => {
+  card.addEventListener('click', () => {
+    const modal = document.getElementById('modal-' + card.dataset.modal);
+    if (!modal) return;
+    lastTrigger = card;
+    modal.showModal();
+  });
 });
 
-overlay.addEventListener('click', closeAllModals);
+document.querySelectorAll('dialog.modal').forEach(modal => {
+  modal.querySelector('.modal-close').addEventListener('click', () => modal.close());
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeAllModals();
+  // clic à côté de la fenêtre = fermer
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+  });
+
+  modal.addEventListener('close', () => {
+    if (lastTrigger) lastTrigger.focus();
+  });
 });
 
 
+// copier l'adresse mail
+
+const copyBtn = document.getElementById('copy-email');
+const copyLabel = copyBtn.querySelector('.copy-label');
+const copyStatus = document.getElementById('copy-status');
+let copyTimer;
+
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(copyBtn.dataset.email);
+    copyLabel.textContent = 'Copié !';
+    copyStatus.textContent = 'Adresse e-mail copiée.';
+  } catch {
+    copyLabel.textContent = 'Raté, copiez à la main';
+    copyStatus.textContent = 'La copie automatique ne marche pas ici.';
+  }
+  copyBtn.classList.add('copied');
+
+  clearTimeout(copyTimer);
+  copyTimer = setTimeout(() => {
+    copyLabel.textContent = 'Copier';
+    copyStatus.textContent = '';
+    copyBtn.classList.remove('copied');
+  }, 2000);
+});
+
+
+// apparitions douces au scroll
+
+const revealItems = document.querySelectorAll('.reveal');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (reduceMotion || !('IntersectionObserver' in window)) {
+  revealItems.forEach(el => el.classList.add('is-visible'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealItems.forEach(el => observer.observe(el));
+}

@@ -3,293 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Patin — Portfolio</title>
+    <title>Lucas Patin — Étudiant en cybersécurité</title>
+    <meta name="description" content="Portfolio de Lucas Patin, étudiant en M1 Cybersécurité à l'ESIEE-IT. Je cherche une alternance SOC / analyste en Île-de-France (rythme 1 mois / 1 mois, 2 ans).">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:url" content="https://lucas-porte-folio.netlify.app/">
+    <meta property="og:title" content="Lucas Patin — Étudiant en cybersécurité">
+    <meta property="og:description" content="Étudiant en M1 Cybersécurité à l'ESIEE-IT. Je cherche une alternance SOC / analyste en Île-de-France.">
+    <meta name="theme-color" content="#0d0d14">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%236c63ff'/%3E%3Ctext x='16' y='21.5' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3ELP%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-    <nav id="navbar">
-        <div class="nav-container">
-            <span class="logo">Lucas Patin</span>
-            <ul class="nav-menu">
-                <li><a href="#accueil">Accueil</a></li>
+    <!-- icônes (dessinées au trait, réutilisées avec <use>) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+        <symbol id="i-game" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M7 10.5v3.5M5.25 12.25h3.5"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="14" r="1"/></symbol>
+        <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></symbol>
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+        <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path class="fill" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><path class="fill" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></symbol>
+    </svg>
+
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <header id="navbar">
+        <nav class="nav-container" aria-label="Navigation principale">
+            <a href="#accueil" class="logo">Lucas Patin</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+                <span class="nav-toggle-bar" aria-hidden="true"></span>
+                <span class="sr-only">Ouvrir le menu</span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#a-propos">À propos</a></li>
                 <li><a href="#parcours">Parcours</a></li>
-                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#experiences">Expériences</a></li>
                 <li><a href="#projets">Projets</a></li>
+                <li><a href="#veille">Veille</a></li>
+                <li><a href="#en-construction">En construction</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <section id="accueil" class="hero">
-        <div class="hero-content">
-            <p class="hero-eyebrow">Étudiant en Bachelor Informatique</p>
-            <h1>Bonjour, je suis <span class="highlight">Lucas Patin</span></h1>
-            <p class="hero-sub">Recherche d'un stage de minimum 8 semaines en informatique</p>
-            <a href="#parcours" class="btn">Découvrir mon parcours ↓</a>
-        </div>
-    </section>
+    <main id="main">
 
-    <section id="parcours" class="section">
-        <div class="container">
-            <h2 class="section-title">Mon Parcours</h2>
-            <p class="section-intro">Formation académique et diplômes obtenus.</p>
-            <div class="cards-grid">
-
-                <div class="card" data-modal="bachelor">
-                    <div class="card-icon">🎓</div>
-                    <h3>Bachelor Informatique</h3>
-                    <p>ESIEE-IT, Pontoise</p>
-                    <span class="card-tag">En cours — 3ème année</span>
+        <!-- 1. ACCUEIL -->
+        <section id="accueil" class="hero">
+            <div class="container">
+                <p class="hero-eyebrow">Étudiant en M1 Cybersécurité — ESIEE-IT</p>
+                <h1>Lucas Patin</h1>
+                <p class="hero-sub">
+                    Je cherche une alternance en
+                    <span class="scribble">cybersécurité<svg class="scribble-line" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 40 4, 75 12, 115 7 S 175 4, 197 8"/></svg></span>
+                    (SOC / analyste) en Île-de-France.
+                </p>
+                <p class="hero-details">Rythme 1 mois école / 1 mois entreprise, contrat de 2 ans.</p>
+                <div class="btn-row">
+                    <a href="assets/cv/CV_Lucas_Patin.pdf" class="btn" download>
+                        <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+                        Télécharger mon CV
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">Me contacter</a>
                 </div>
-
-                <div class="card" data-modal="bts">
-                    <div class="card-icon">⚙️</div>
-                    <h3>BTS CRSA</h3>
-                    <p>Lycée Jean Perrin, Saint-Ouen l'Aumône</p>
-                    <span class="card-tag">Obtenu — 2022/2024</span>
-                </div>
-
-                <div class="card" data-modal="bac">
-                    <div class="card-icon">📐</div>
-                    <h3>Bac STI2D — Spécialité ITEC</h3>
-                    <p>Lycée Jean Perrin, Saint-Ouen l'Aumône</p>
-                    <span class="card-tag">Obtenu — 2022</span>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="experience" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Expérience Professionnelle</h2>
-            <p class="section-intro">Stages et missions réalisés en entreprise.</p>
-            <div class="cards-grid">
-
-                <div class="card" data-modal="stage">
-                    <div class="card-icon">🔧</div>
-                    <h3>Stage Technicien Maintenance</h3>
-                    <p>Conserverie Artisanale Charles Derungs</p>
-                    <span class="card-tag">Mai – Juin 2024 · 6 semaines</span>
+        <!-- 2. À PROPOS -->
+        <section id="a-propos" class="section">
+            <div class="container about reveal">
+                <div class="about-text">
+                    <h2 class="section-title">À propos</h2>
+                    <p>Je viens de l'industrie. Après un Bac STI2D, j'ai fait un BTS CRSA : automates, câblage, mécanique.</p>
+                    <p>En 2025, je suis passé à l'informatique à l'ESIEE-IT. D'abord en Bachelor, maintenant en M1 Cybersécurité.</p>
+                    <p>J'ai fait deux mois de support IT en entreprise, avec de vrais tickets et de vrais clients.</p>
+                    <p>Aujourd'hui, j'apprends la cybersécurité défensive : en cours, sur TryHackMe et avec un lab perso. Mon objectif, c'est un poste
+                        <span class="scribble">SOC<svg class="scribble-line" viewBox="0 0 60 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 15 4, 30 11, 58 6"/></svg></span> / analyste.</p>
+                    <ul class="about-facts">
+                        <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Saint-Ouen-l'Aumône (95)</li>
+                        <li><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Anglais B1 (TOEIC prévu en M2)</li>
+                    </ul>
                 </div>
-
+                <!-- La photo s'affiche toute seule dès que assets/img/photo.jpg existe -->
+                <figure class="about-photo" data-photo="assets/img/photo.jpg" data-alt="Photo de Lucas Patin" hidden></figure>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projets" class="section">
-        <div class="container">
-            <h2 class="section-title">Mes Projets</h2>
-            <p class="section-intro">Projets académiques et personnels réalisés.</p>
-            <div class="cards-grid">
+        <!-- 3. PARCOURS -->
+        <section id="parcours" class="section">
+            <div class="container">
+                <h2 class="section-title">Parcours</h2>
+                <p class="section-intro">Du plus récent au plus ancien.</p>
 
-                <div class="card" data-modal="dior">
-                    <div class="card-icon">💄</div>
-                    <h3>Projet DIOR</h3>
-                    <p>Machine automatisée — Projet de fin de BTS</p>
-                    <span class="card-tag">Automatisme · Mécanique</span>
-                </div>
+                <ol class="timeline">
+                    <li class="timeline-item reveal">
+                        <div class="card">
+                            <div class="card-head">
+                                <span class="logo-badge" data-logo="assets/img/logo-esiee-it.png" data-alt="Logo ESIEE-IT" aria-hidden="true">EI</span>
+                                <div>
+                                    <p class="card-date">2026 – en cours <span class="hand-note">(jusqu'en 2028)</span></p>
+                                    <h3>M1 Cybersécurité</h3>
+                                    <p class="card-place">ESIEE-IT, Pontoise</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
-                <div class="card" data-modal="python">
-                    <div class="card-icon">🎮</div>
-                    <h3>Mercredi Shadow Run</h3>
-                    <p>Jeu runner développé en Python</p>
-                    <span class="card-tag">Python · Pygame · Piscine</span>
-                </div>
+                    <li class="timeline-item reveal">
+                        <div class="card tilt-left">
+                            <div class="card-head">
+                                <span class="logo-badge" data-logo="assets/img/logo-esiee-it.png" data-alt="Logo ESIEE-IT" aria-hidden="true">EI</span>
+                                <div>
+                                    <p class="card-date">2025 – 2026 · <span class="status-done">Obtenu</span></p>
+                                    <h3>Bachelor Informatique, spécialité Cybersécurité</h3>
+                                    <p class="card-place">ESIEE-IT, Pontoise</p>
+                                </div>
+                            </div>
+                            <ul class="card-list">
+                                <li>Python, C, JavaScript, HTML/CSS</li>
+                                <li>Administration systèmes et réseaux, configuration Windows</li>
+                                <li>TP de cybersécurité sur Kali Linux et Ubuntu</li>
+                                <li>Création de sites web et de bases de données</li>
+                            </ul>
+                        </div>
+                    </li>
 
-                <div class="card" data-modal="video">
-                    <div class="card-icon">🎬</div>
-                    <h3>Montage Vidéo</h3>
-                    <p>Projets personnels de création audiovisuelle</p>
-                    <span class="card-tag">DaVinci · Premiere · Photoshop</span>
-                </div>
+                    <li class="timeline-item reveal">
+                        <div class="card">
+                            <div class="card-head">
+                                <span class="logo-badge" data-logo="assets/img/logo-jean-perrin.png" data-alt="Logo du Lycée Jean Perrin" aria-hidden="true">JP</span>
+                                <div>
+                                    <p class="card-date">2023 – 2025 · <span class="status-done">Obtenu</span></p>
+                                    <h3>BTS CRSA <span class="muted-inline">(Conception et Réalisation de Systèmes Automatiques)</span></h3>
+                                    <p class="card-place">Lycée Jean Perrin, Saint-Ouen-l'Aumône</p>
+                                </div>
+                            </div>
+                            <ul class="card-list">
+                                <li>Grafcet, programmation d'automates (ST, FBD, LADDER)</li>
+                                <li>Pneumatique, électricité, mécanique</li>
+                                <li>Dimensionnement et modélisation 3D</li>
+                            </ul>
+                        </div>
+                    </li>
 
-                <div class="card" data-modal="portfolio">
-                    <div class="card-icon">💻</div>
-                    <h3>Ce Portfolio</h3>
-                    <p>Site web responsive from scratch</p>
-                    <span class="card-tag">HTML · CSS · JavaScript</span>
-                </div>
-
+                    <li class="timeline-item reveal">
+                        <div class="card tilt-right">
+                            <div class="card-head">
+                                <span class="logo-badge" data-logo="assets/img/logo-jean-perrin.png" data-alt="Logo du Lycée Jean Perrin" aria-hidden="true">JP</span>
+                                <div>
+                                    <p class="card-date">2023 · <span class="status-done">Obtenu</span></p>
+                                    <h3>Bac STI2D, spécialité ITEC</h3>
+                                    <p class="card-place">Lycée Jean Perrin, Saint-Ouen-l'Aumône</p>
+                                </div>
+                            </div>
+                            <ul class="card-list">
+                                <li>Conception mécanique et modélisation 3D</li>
+                                <li>Choix des matériaux</li>
+                                <li>Éco-conception</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">Me Contacter</h2>
-            <p class="section-intro">N'hésitez pas à me contacter pour toute opportunité.</p>
+        <!-- 4. EXPÉRIENCES -->
+        <section id="experiences" class="section">
+            <div class="container">
+                <h2 class="section-title">Expériences</h2>
+                <p class="section-intro">Ce que j'ai fait en entreprise.</p>
 
-            <div class="contact-simple">
+                <div class="xp-list">
+                    <article class="card xp-card xp-with-map reveal">
+                        <div class="xp-info">
+                            <div class="card-head">
+                                <span class="logo-badge" data-logo="assets/img/logo-systup.png" data-alt="Logo Systup" aria-hidden="true">SY</span>
+                                <div>
+                                    <p class="card-date">21 juin – 21 août 2026 · 2 mois</p>
+                                    <h3>Stage Support IT</h3>
+                                    <p class="card-place">Systup (PME), Boulogne-Billancourt</p>
+                                </div>
+                            </div>
+                            <ul class="card-list">
+                                <li>Traitement de tickets clients sur GLPI</li>
+                                <li>Dépannage Windows, réseau et applicatifs, sur des cas réels de clients</li>
+                                <li>Gestion de mots de passe avec KeePass</li>
+                                <li>Téléphonie 3CX</li>
+                                <li>Rédaction de procédures pour les clients</li>
+                            </ul>
+                        </div>
+                        <div class="xp-map">
+                            <iframe
+                                title="Carte OpenStreetMap de Boulogne-Billancourt"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=2.2199%2C48.8297%2C2.2599%2C48.8497&amp;layer=mapnik&amp;marker=48.8397%2C2.2399"
+                                loading="lazy"
+                                referrerpolicy="no-referrer"></iframe>
+                        </div>
+                    </article>
 
-                <div class="contact-item">
-                    <span class="contact-label">Email</span>
-                    <a href="mailto:patinlucas095@gmail.com">patinlucas095@gmail.com</a>
+                    <article class="card xp-card tilt-left reveal">
+                        <div class="card-head">
+                            <span class="logo-badge" data-logo="assets/img/logo-derungs.png" data-alt="Logo de la Conserverie Charles Derungs" aria-hidden="true">CD</span>
+                            <div>
+                                <p class="card-date">Mai – juin 2024 · 6 semaines</p>
+                                <h3>Stage Technicien de maintenance</h3>
+                                <p class="card-place">Conserverie Artisanale Charles Derungs, Saint-Ouen-l'Aumône</p>
+                            </div>
+                        </div>
+                        <p class="card-note">Stage de fin de 1<sup>re</sup> année de BTS.</p>
+                        <ul class="card-list">
+                            <li>Maintenance des machines de production</li>
+                            <li>Diagnostic et réparation de pannes mécaniques et électriques</li>
+                            <li>Reporting à l'équipe technique</li>
+                        </ul>
+                    </article>
+
+                    <!--
+                        BÉNÉVOLAT : à remplir, puis retirer les balises de commentaire autour du bloc.
+
+                    <article class="card xp-card reveal">
+                        <div class="card-head">
+                            <span class="logo-badge" aria-hidden="true">XX</span>
+                            <div>
+                                <p class="card-date">Dates</p>
+                                <h3>Bénévolat — Rôle</h3>
+                                <p class="card-place">Nom de la structure, ville</p>
+                            </div>
+                        </div>
+                        <ul class="card-list">
+                            <li>Ce que j'y ai fait</li>
+                        </ul>
+                    </article>
+                    -->
                 </div>
+            </div>
+        </section>
 
-                <div class="contact-item">
-                    <span class="contact-label">Téléphone</span>
-                    <span>06 43 07 08 35</span>
+        <!-- 5. PROJETS -->
+        <section id="projets" class="section">
+            <div class="container">
+                <h2 class="section-title">Projets</h2>
+                <p class="section-intro">Cliquez sur une carte pour voir le détail.</p>
+
+                <div class="cards-grid">
+                    <button type="button" class="card project-card reveal" data-modal="dior">
+                        <svg class="project-icon" aria-hidden="true"><use href="#i-chip"/></svg>
+                        <span class="project-title">Projet DIOR</span>
+                        <span class="project-sub">Projet de fin de BTS CRSA · 2025</span>
+                        <span class="card-tag">Automatisme · Mécanique</span>
+                    </button>
+
+                    <button type="button" class="card project-card tilt-right reveal" data-modal="python">
+                        <svg class="project-icon" aria-hidden="true"><use href="#i-game"/></svg>
+                        <span class="project-title">Mercredi Shadow Run</span>
+                        <span class="project-sub">Piscine Python ESIEE-IT · 2026</span>
+                        <span class="card-tag">Python · Pygame</span>
+                    </button>
+
+                    <button type="button" class="card project-card reveal" data-modal="video">
+                        <svg class="project-icon" aria-hidden="true"><use href="#i-film"/></svg>
+                        <span class="project-title">Montage vidéo</span>
+                        <span class="project-sub">Projets personnels</span>
+                        <span class="card-tag">DaVinci Resolve · Premiere Pro · Photoshop</span>
+                    </button>
+
+                    <button type="button" class="card project-card tilt-left reveal" data-modal="portfolio">
+                        <svg class="project-icon" aria-hidden="true"><use href="#i-code"/></svg>
+                        <span class="project-title">Ce portfolio</span>
+                        <span class="project-sub">Projet personnel · 2026</span>
+                        <span class="card-tag">HTML · CSS · JavaScript</span>
+                    </button>
                 </div>
+            </div>
+        </section>
 
-                <div class="contact-item">
-                    <span class="contact-label">Réseaux sociaux</span>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/lucas-patin-421b5a356/"
-                           target="_blank"
-                           class="social-btn social-linkedin">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                            LinkedIn
+        <!-- 6. VEILLE -->
+        <section id="veille" class="section">
+            <div class="container">
+                <h2 class="section-title">Veille</h2>
+                <p class="section-intro">Ce que je suis et ce sur quoi je travaille.</p>
+
+                <article class="card veille-card reveal">
+                    <p class="card-date">M1 ESIEE-IT · 2026 / 2027 · <span class="status status-started">En cours</span></p>
+                    <h3>Mémoire de Veille Technologique (MVT)</h3>
+                    <p>Un projet de groupe sur 7 mois.</p>
+                    <p>Notre thème : <strong>cybersécurité défensive et IA</strong>. On regarde comment l'IA aide (ou complique) la détection et la réponse aux menaces.</p>
+
+                    <!--
+                        SOURCES SUIVIES : retirer le commentaire et ajouter une ligne <li> par source.
+
+                    <h4>Sources que je suis</h4>
+                    <ul class="card-list">
+                        <li><a href="https://exemple.fr">Nom de la source</a> — pourquoi je la suis</li>
+                    </ul>
+                    -->
+
+                    <!--
+                        LIEN VERS LE MÉMOIRE : à décommenter quand il sera prêt.
+
+                    <p><a class="text-link" href="assets/mvt.pdf">Lire le mémoire</a></p>
+                    -->
+                </article>
+            </div>
+        </section>
+
+        <!-- 7. EN CONSTRUCTION -->
+        <section id="en-construction" class="section">
+            <div class="container">
+                <h2 class="section-title">En construction</h2>
+                <p class="section-intro">Mon carnet de bord : ce que j'apprends en ce moment, sans en rajouter.</p>
+
+                <p class="last-update">Dernière mise à jour : <time datetime="2026-10">octobre 2026</time></p>
+
+                <!--
+                    AJOUTER UNE ENTRÉE :
+                    1. Copier un bloc <article class="log-entry"> ... </article> en entier.
+                    2. Le coller à l'endroit voulu dans <div class="logbook">.
+                    3. Changer le titre, le texte et le badge de statut.
+                       Badges possibles (garder la classe qui va avec le texte) :
+                         <span class="status status-started">Commencé</span>
+                         <span class="status status-prep">En préparation</span>
+                         <span class="status status-planned">Prévu</span>
+                    4. Mettre à jour la date « Dernière mise à jour » juste au-dessus.
+                -->
+                <div class="logbook">
+
+                    <article class="log-entry reveal">
+                        <div class="log-head">
+                            <h3>TryHackMe</h3>
+                            <span class="status status-started">Commencé</span>
+                            <span class="hand-note hand-note-big" aria-hidden="true">← je débute !</span>
+                        </div>
+                        <p>Pseudo : <code>patinlucas095</code>. Rang [0x1] NEOPHYTE, je suis à la room 2.</p>
+                        <p>Objectif : suivre le parcours SOC Level 1.</p>
+                    </article>
+
+                    <article class="log-entry tilt-right reveal">
+                        <div class="log-head">
+                            <h3>Homelab sur VirtualBox</h3>
+                            <span class="status status-prep">En préparation</span>
+                        </div>
+                        <p>Plusieurs VM Kali Linux : une machine « chef réseau » (administrateur) et des machines « employés ». Le but : apprendre à gérer les droits utilisateurs et à configurer des pare-feu.</p>
+                        <p>Piste suivante : ajouter un poste Windows et un SIEM gratuit (Wazuh) pour observer mes propres tests dans les logs.</p>
+                    </article>
+
+                    <article class="log-entry reveal">
+                        <div class="log-head">
+                            <h3>Certifications</h3>
+                            <span class="status status-planned">Prévu</span>
+                        </div>
+                        <ul class="card-list">
+                            <li>SecNumacadémie (ANSSI)</li>
+                            <li>ISC2 Certified in Cybersecurity (CC)</li>
+                            <li>Puis CompTIA Security+</li>
+                            <li>TOEIC en M2</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CONTACT -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-intro">Le plus simple, c'est par mail. Je réponds vite.</p>
+
+                <div class="contact-grid reveal">
+                    <div class="contact-item contact-mail">
+                        <span class="contact-label">E-mail</span>
+                        <div class="mail-row">
+                            <a href="mailto:patinlucas095@gmail.com" class="contact-link">
+                                <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+                                patinlucas095@gmail.com
+                            </a>
+                            <button type="button" class="copy-btn" id="copy-email" data-email="patinlucas095@gmail.com">
+                                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+                                <span class="copy-label">Copier</span>
+                            </button>
+                        </div>
+                        <span class="sr-only" id="copy-status" aria-live="polite"></span>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-label">Réseaux</span>
+                        <a href="https://www.linkedin.com/in/lucas-patin-421b5a356/" target="_blank" rel="noopener" class="contact-link">
+                            <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+                            LinkedIn <span class="sr-only">(nouvel onglet)</span>
                         </a>
-                        <a href="https://github.com/patinlucas095-rgb"
-                           target="_blank"
-                           class="social-btn social-github">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            GitHub
+                        <a href="https://github.com/patinlucas095-rgb" target="_blank" rel="noopener" class="contact-link">
+                            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                            GitHub <span class="sr-only">(nouvel onglet)</span>
+                        </a>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-label">CV</span>
+                        <a href="assets/cv/CV_Lucas_Patin.pdf" class="btn" download>
+                            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+                            Télécharger mon CV
                         </a>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <footer>
-        <p>© 2026 Lucas Patin — Tous droits réservés.</p>
+        <p>© 2026 Lucas Patin — site fait main en HTML, CSS et JavaScript.</p>
     </footer>
 
-    <div id="overlay"></div>
-
-    <div class="modal" id="modal-bachelor">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">🎓</div>
-        <h2>Bachelor Informatique — 3ème année</h2>
-        <p class="modal-school">ESIEE-IT · Pontoise · En cours</p>
-        <div class="modal-body">
-            <p>Formation en informatique:</p>
-            <ul>
-                <li><strong>Langages :</strong> Python, C, JavaScript, HTML/CSS</li>
-                <li><strong>Systèmes :</strong> Configuration Windows, administration systèmes & réseaux</li>
-                <li><strong>Cybersécurité :</strong> TP sur Kali Linux, Ubuntu</li>
-                <li><strong>Web :</strong> Création de sites internet, bases de données</li>
-            </ul>
+    <!-- MODALES PROJETS -->
+    <dialog class="modal" id="modal-dior" aria-labelledby="modal-dior-title">
+        <div class="modal-inner">
+            <button type="button" class="modal-close" aria-label="Fermer">✕</button>
+            <h2 id="modal-dior-title">Projet DIOR</h2>
+            <p class="modal-meta">Projet de fin de BTS CRSA · 2025 · Automatisme · Mécanique</p>
+            <div class="modal-body">
+                <p>On a repris une machine de distribution de fard à paupières conçue pour DIOR. Le but : la faire passer d'un cycle <strong>ouvert</strong> à un cycle <strong>fermé</strong>.</p>
+                <p>J'ai suivi le projet de bout en bout :</p>
+                <ul>
+                    <li>la conception 3D ;</li>
+                    <li>le câblage électrique ;</li>
+                    <li>la programmation de l'automate ;</li>
+                    <li>l'installation ;</li>
+                    <li>le dossier technique et la soutenance devant un jury professionnel.</li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </dialog>
 
-    <div class="modal" id="modal-bts">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">⚙️</div>
-        <h2>BTS CRSA — Conception et Réalisation de Systèmes Automatiques</h2>
-        <p class="modal-school">Lycée Jean Perrin · Saint-Ouen l'Aumône · 2022 – 2024</p>
-        <div class="modal-body">
-            <p>Formation spécialisée dans la conception, la programmation et la maintenance de systèmes automatisés industriels :</p>
-            <ul>
-                <li><strong>Informatique industrielle :</strong> Grafcet, programmation d'automates (ST, FBD, LADDER)</li>
-                <li><strong>Automatisme :</strong> Pneumatique, électricité, mécanique</li>
-                <li><strong>Conception :</strong> Dimensionnement, modélisation 3D</li>
-            </ul>
+    <dialog class="modal" id="modal-python" aria-labelledby="modal-python-title">
+        <div class="modal-inner">
+            <button type="button" class="modal-close" aria-label="Fermer">✕</button>
+            <h2 id="modal-python-title">Mercredi Shadow Run</h2>
+            <p class="modal-meta">Piscine Python ESIEE-IT · 2026 · Python · Pygame</p>
+            <div class="modal-body">
+                <p>Un jeu de type runner inspiré de la série « Mercredi ». Je l'ai fait en 1 semaine, sur un thème imposé.</p>
+                <ul>
+                    <li>Collecte de pièces</li>
+                    <li>Obstacles à éviter</li>
+                    <li>Difficulté qui augmente petit à petit</li>
+                    <li>Une boutique pour acheter des bonus avec les pièces</li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </dialog>
 
-    <div class="modal" id="modal-bac">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">📐</div>
-        <h2>Bac STI2D — Spécialité ITEC</h2>
-        <p class="modal-school">Lycée Jean Perrin · Saint-Ouen l'Aumône · 2022</p>
-        <div class="modal-body">
-            <p>Baccalauréat Sciences et Technologies de l'Industrie et du Développement Durable, spécialité <strong>Innovation Technologique et Éco-Conception (ITEC)</strong> :</p>
-            <ul>
-                <li><strong>Conception mécanique :</strong> Modélisation 3D, analyse de systèmes techniques</li>
-                <li><strong>Matériaux et structures :</strong> Choix de matériaux, dimensionnement</li>
-                <li><strong>Éco-conception :</strong> Analyse du cycle de vie, démarche environnementale</li>
-            </ul>
+    <dialog class="modal" id="modal-video" aria-labelledby="modal-video-title">
+        <div class="modal-inner">
+            <button type="button" class="modal-close" aria-label="Fermer">✕</button>
+            <h2 id="modal-video-title">Montage vidéo</h2>
+            <p class="modal-meta">Projets personnels · DaVinci Resolve · Premiere Pro · Photoshop</p>
+            <div class="modal-body">
+                <p>Je fais du montage sur mon temps libre.</p>
+                <ul>
+                    <li>Montage et étalonnage</li>
+                    <li>Synchronisation audio</li>
+                    <li>Retouche d'images et miniatures</li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </dialog>
 
-    <div class="modal" id="modal-stage">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">🔧</div>
-        <h2>Stage — Technicien de Maintenance</h2>
-        <p class="modal-school">Conserverie Artisanale Charles Derungs · Saint-Ouen l'Aumône · Mai – Juin 2024 (6 semaines)</p>
-        <div class="modal-body">
-            <p>Stage de fin de 1ère année de BTS au sein d'une conserverie artisanale :</p>
-            <ul>
-                <li>Maintien en bon état de fonctionnement des machines de production</li>
-                <li>Diagnostic et réparation de pannes mécaniques et électriques</li>
-                <li>Relation client et reporting auprès de l'équipe technique</li>
-                <li>Application concrète des compétences en automatisme et maintenance industrielle</li>
-            </ul>
+    <dialog class="modal" id="modal-portfolio" aria-labelledby="modal-portfolio-title">
+        <div class="modal-inner">
+            <button type="button" class="modal-close" aria-label="Fermer">✕</button>
+            <h2 id="modal-portfolio-title">Ce portfolio</h2>
+            <p class="modal-meta">Projet personnel · 2026 · HTML · CSS · JavaScript</p>
+            <div class="modal-body">
+                <p>Le site que vous êtes en train de lire. Je l'ai fait from scratch, sans framework.</p>
+                <ul>
+                    <li>HTML, CSS et JavaScript, rien d'autre</li>
+                    <li>Responsive et utilisable au clavier</li>
+                    <li>Hébergé sur Netlify</li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-    <div class="modal" id="modal-dior">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">💄</div>
-        <h2>Projet DIOR</h2>
-        <p class="modal-school">Projet de fin de BTS CRSA · 2024</p>
-        <div class="modal-body">
-            <p>Projet de fin d'études réalisé dans le cadre du BTS CRSA :</p>
-            <ul>
-                <li>Reprise d'une ancienne machine de distribution de fard à paupières conçue pour DIOR</li>
-                <li>Transformation : passage d'un cycle <strong>ouvert</strong> à un cycle <strong>fermé</strong></li>
-                <li>Conception 3D jusqu'à l'installation, câblage électrique et programmation de l'automate</li>
-                <li>Rédaction du dossier technique complet et soutenance orale devant un jury professionnel</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal" id="modal-python">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">🎮</div>
-        <h2>Mercredi Shadow Run</h2>
-        <p class="modal-school">Projet Piscine Python · ESIEE-IT · 2026</p>
-        <div class="modal-body">
-            <p>Jeu runner développé en une semaine lors de la Piscine Python :</p>
-            <ul>
-                <li><strong>Principe :</strong> Runner inspiré de la série "Mercredi"</li>
-                <li><strong>Gameplay :</strong> Collecte de pièces, évitement d'obstacles, difficulté progressive</li>
-                <li><strong>Système de boutique :</strong> Achat de bonus avec les pièces collectées</li>
-                <li><strong>Technologies :</strong> Python, Pygame pour le rendu graphique et la gestion des collisions</li>
-                <li><strong>Contrainte :</strong> Création du jeu en 1 semaine et thème imposé</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal" id="modal-video">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">🎬</div>
-        <h2>Montage Vidéo</h2>
-        <p class="modal-school">Projets personnels</p>
-        <div class="modal-body">
-            <p>Pratique personnelle du montage vidéo :</p>
-            <ul>
-                <li><strong>DaVinci Resolve :</strong> Étalonnage couleur et montage vidéo</li>
-                <li><strong>Adobe Premiere Pro :</strong> Montage vidéo, transitions, synchronisation audio</li>
-                <li><strong>Adobe Photoshop :</strong> Retouche d'images, création de visuels, miniatures</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal" id="modal-portfolio">
-        <button class="modal-close">✕</button>
-        <div class="modal-icon">💻</div>
-        <h2>Ce Portfolio</h2>
-        <p class="modal-school">Projet personnel · 2026</p>
-        <div class="modal-body">
-            <p>Création de ce portfolio :</p>
-            <ul>
-                <li><strong>HTML :</strong> Structure du portfolio</li>
-                <li><strong>CSS :</strong> Design moderne et couleurs simples</li>
-                <li><strong>JavaScript :</strong> Animations et interactions</li>
-                <li><strong>Hébergement :</strong> Déploiement prévu sur GitHub Pages</li>
-            </ul>
-        </div>
-    </div>
+    </dialog>
 
     <script src="js/script.js"></script>
 </body>
